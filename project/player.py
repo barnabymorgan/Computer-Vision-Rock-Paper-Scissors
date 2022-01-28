@@ -14,8 +14,6 @@ def play_game():
     game_score = [0, 0]
 
     while True:
-        countdown(3)
-
         player_action = Action(get_player_selection())
         computer_action = Action(get_computer_selection())
         print(f"\nYou chose {player_action.name}, \
@@ -58,18 +56,6 @@ def play_result(player_action, computer_action):
         print(f"{computer_action.name} beats {player_action.name}! You lose.")
         return 2
 
-
-def countdown(t):
-    while t:
-        if t == 3:
-            print("ROCK")
-        if t == 2:
-            print("PAPER")
-        if t == 1:
-            print("SCISSORS")
-        time.sleep(1)
-        t -= 1
-    print('SHOOT')
 
 
 play_game()
