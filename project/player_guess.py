@@ -10,7 +10,7 @@ ret = cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 300.0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 
-while i != 0: #loops forever  
+while True: #loops forever  
     ret, frame = cap.read()
     resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
     image_np = np.array(resized_frame)
@@ -25,13 +25,13 @@ while i != 0: #loops forever
     # Press q to close the window
     #print(prediction)
 
-    if prediction[0][0] > .8:
+    if prediction[0][0] > .7:
         print("Rock")
 
-    elif prediction[0][1] > .8:
+    elif prediction[0][1] > .7:
         print("Paper")
 
-    elif prediction[0][2] > .8: 
+    elif prediction[0][2] > .7: 
         print("Scissors")
 
     else:
@@ -45,6 +45,18 @@ while i != 0: #loops forever
 cap.release()
 # Destroy all the windows
 cv2.destroyAllWindows()
+
+def countdown(t):
+    while t:
+        if t == 3:
+            print("ROCK")
+        if t == 2:
+            print("PAPER")
+        if t == 1:
+            print("SCISSORS")
+        time.sleep(1)
+        t -= 1
+    print('SHOOT')
 
 
 def get_player_selection():
